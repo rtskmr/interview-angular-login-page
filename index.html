@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+</head>
+
+<body>
+  <div class="container" ng-app="myApp">
+    <div class="row">
+      <div ui-view></div>
+    </div>
+
+    <script type="text/ng-template" id="login.html">
+    <div class="col-md-12">
+      <h3>Login page</h3>
+      
+      <form ng-submit="formSubmit()" class="form">
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="username" placeholder="username" required=""/>
+          </div> 
+
+          <div class="form-group">
+            <input type="password" class="form-control" ng-model="password" placeholder="password" required=""/>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="remember" ng-model="remember">Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-success">Login</button>
+            <span class="text-danger">{{ error }}</span>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </script>
+
+    <script type="text/ng-template" id="home.html">
+    <div class="col-md-12">
+      <h3>Home Page</h3>
+      <a ui-sref="login">Logout</a>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Employee Name</th>
+              <th>Employee Salary</th>
+              <th>Employee Age</th>
+              <th>Profile Image</th>
+          </tr>
+      </thead>
+      <tbody>
+        <!-- | startFrom:currentPage*pageSize | limitTo:pageSize -->
+          <tr ng-repeat="Employee in employeeList">
+              <td>{{Employee.id}}</td>
+              <td>{{Employee.employee_name}}</td>
+              <td>{{Employee.employee_salary}}</td>
+              <td>{{Employee.employee_age}}</td>
+              <td>{{Employee.profile_image}}</td>
+          </tr>
+      </tbody>
+  </table>
+<!-- Pagination -->
+  <!-- <div>
+    <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+				        Previous
+				 </button>
+
+				<button ng-disabled="currentPage ==userList.length/pageSize-1" ng-click="currentPage=currentPage+1">
+				        Next
+          			    </button>
+  </div> -->
+  <!-- === -->
+    </div>
+  </script>
+  </div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js'></script>
+
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>
